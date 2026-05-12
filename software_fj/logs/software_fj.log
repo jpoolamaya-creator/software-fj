@@ -1,0 +1,138 @@
+[2026-05-12 03:15:08] [INFO    ] Software FJ iniciado.
+[2026-05-12 03:15:08] [INFO    ] CLIENTE REGISTRADO: [#101] Andrés Martínez | andres@fj.com | +57 300 123 4567
+[2026-05-12 03:15:08] [INFO    ] CLIENTE REGISTRADO: [#102] Laura Gómez | laura@fj.com | 3101234567
+[2026-05-12 03:15:08] [INFO    ] Software FJ iniciado.
+[2026-05-12 03:15:08] [ERROR   ] ERROR CLIENTE: 'no-es-email' no es una dirección de email válida.
+    Traceback (most recent call last):
+      File "/home/claude/software_fj/management.py", line 63, in register_client
+        client = Client(client_id, first_name, last_name, email, phone)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      File "/home/claude/software_fj/clients.py", line 75, in __init__
+        self.validate()  # Falla rápido si algún dato es inválido
+        ^^^^^^^^^^^^^^^
+      File "/home/claude/software_fj/clients.py", line 97, in validate
+        raise ClientValidationError(f"'{self._email}' no es una dirección de email válida.")
+    exceptions.ClientValidationError: 'no-es-email' no es una dirección de email válida.
+[2026-05-12 03:15:08] [ERROR   ] ERROR CLIENTE: first_name no puede estar vacío.
+    Traceback (most recent call last):
+      File "/home/claude/software_fj/management.py", line 63, in register_client
+        client = Client(client_id, first_name, last_name, email, phone)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      File "/home/claude/software_fj/clients.py", line 75, in __init__
+        self.validate()  # Falla rápido si algún dato es inválido
+        ^^^^^^^^^^^^^^^
+      File "/home/claude/software_fj/clients.py", line 89, in validate
+        raise ClientValidationError(f"{field} no puede estar vacío.")
+    exceptions.ClientValidationError: first_name no puede estar vacío.
+[2026-05-12 03:15:08] [INFO    ] CLIENTE REGISTRADO: [#203] Ana Torres | ana@fj.com | 3100000000
+[2026-05-12 03:15:08] [ERROR   ] ERROR CLIENTE: El cliente con ID '203' ya está registrado. | Detalles: client_id=203
+    Traceback (most recent call last):
+      File "/home/claude/software_fj/management.py", line 62, in register_client
+        raise DuplicateClientError(client_id)
+    exceptions.DuplicateClientError: El cliente con ID '203' ya está registrado. | Detalles: client_id=203
+[2026-05-12 03:15:08] [ERROR   ] ERROR CLIENTE: 'abc' no es un número de teléfono válido.
+    Traceback (most recent call last):
+      File "/home/claude/software_fj/management.py", line 63, in register_client
+        client = Client(client_id, first_name, last_name, email, phone)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      File "/home/claude/software_fj/clients.py", line 75, in __init__
+        self.validate()  # Falla rápido si algún dato es inválido
+        ^^^^^^^^^^^^^^^
+      File "/home/claude/software_fj/clients.py", line 101, in validate
+        raise ClientValidationError(f"'{self._phone}' no es un número de teléfono válido.")
+    exceptions.ClientValidationError: 'abc' no es un número de teléfono válido.
+[2026-05-12 03:15:08] [ERROR   ] ERROR CLIENTE: client_id debe ser mayor a 0.
+    Traceback (most recent call last):
+      File "/home/claude/software_fj/management.py", line 63, in register_client
+        client = Client(client_id, first_name, last_name, email, phone)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      File "/home/claude/software_fj/clients.py", line 75, in __init__
+        self.validate()  # Falla rápido si algún dato es inválido
+        ^^^^^^^^^^^^^^^
+      File "/home/claude/software_fj/clients.py", line 84, in validate
+        raise ClientValidationError("client_id debe ser mayor a 0.")
+    exceptions.ClientValidationError: client_id debe ser mayor a 0.
+[2026-05-12 03:15:08] [INFO    ] Software FJ iniciado.
+[2026-05-12 03:15:08] [INFO    ] CLIENTE REGISTRADO: [#301] Carlos Ruiz | carlos@fj.com | +57 310 987 6543
+[2026-05-12 03:15:08] [INFO    ] SERVICIO AGREGADO: [Sala] Sala Boardroom | Sala: Piso 5 | Capacidad: 20 | Tarifa: $90,000/h | Disponible
+[2026-05-12 03:15:08] [INFO    ] RESERVA CREADA: #1 | Cliente #301 | 'Sala Boardroom' | 2026-05-19 | 3.0h | $321,300.00
+[2026-05-12 03:15:08] [INFO    ] RESERVA CONFIRMADA: #1
+[2026-05-12 03:15:08] [INFO    ] RESERVA COMPLETADA: #1
+[2026-05-12 03:15:08] [INFO    ] Software FJ iniciado.
+[2026-05-12 03:15:08] [INFO    ] CLIENTE REGISTRADO: [#401] María López | maria@fj.com | 3204567890
+[2026-05-12 03:15:08] [INFO    ] SERVICIO AGREGADO: [Equipo] Pack Demo | Ítems: Laptop, Proyector | Tarifa: $20,000/ítem/h | Disponible
+[2026-05-12 03:15:08] [INFO    ] RESERVA CREADA: #1 | Cliente #401 | 'Pack Demo' | 2026-05-22 | 4.0h | $190,400.00
+[2026-05-12 03:15:08] [ERROR   ] ERROR RESERVA: El cliente 401 ya tiene una reserva para 'Pack Demo' el 2026-05-22. | Detalles: client_id=401, service='Pack Demo', date=2026-05-22
+    Traceback (most recent call last):
+      File "/home/claude/software_fj/management.py", line 184, in create_reservation
+        raise ReservationConflictError(client_id, service_name, str(reservation_date))
+    exceptions.ReservationConflictError: El cliente 401 ya tiene una reserva para 'Pack Demo' el 2026-05-22. | Detalles: client_id=401, service='Pack Demo', date=2026-05-22
+[2026-05-12 03:15:08] [ERROR   ] ERROR RESERVA: La duración 1.0h está fuera del rango válido [2.0h - 24.0h]. | Detalles: duration=1.0, min=2.0, max=24.0
+    Traceback (most recent call last):
+      File "/home/claude/software_fj/management.py", line 186, in create_reservation
+        reservation = Reservation(
+                      ^^^^^^^^^^^^
+      File "/home/claude/software_fj/reservations.py", line 63, in __init__
+        self.validate()
+      File "/home/claude/software_fj/reservations.py", line 77, in validate
+        self._service._validate_duration(self._hours)
+      File "/home/claude/software_fj/services.py", line 67, in _validate_duration
+        raise InvalidDurationError(hours, self.min_hours, self.max_hours)
+    exceptions.InvalidDurationError: La duración 1.0h está fuera del rango válido [2.0h - 24.0h]. | Detalles: duration=1.0, min=2.0, max=24.0
+[2026-05-12 03:15:08] [ERROR   ] ERROR RESERVA: La duración 25.0h está fuera del rango válido [2.0h - 24.0h]. | Detalles: duration=25.0, min=2.0, max=24.0
+    Traceback (most recent call last):
+      File "/home/claude/software_fj/management.py", line 186, in create_reservation
+        reservation = Reservation(
+                      ^^^^^^^^^^^^
+      File "/home/claude/software_fj/reservations.py", line 63, in __init__
+        self.validate()
+      File "/home/claude/software_fj/reservations.py", line 77, in validate
+        self._service._validate_duration(self._hours)
+      File "/home/claude/software_fj/services.py", line 67, in _validate_duration
+        raise InvalidDurationError(hours, self.min_hours, self.max_hours)
+    exceptions.InvalidDurationError: La duración 25.0h está fuera del rango válido [2.0h - 24.0h]. | Detalles: duration=25.0, min=2.0, max=24.0
+[2026-05-12 03:15:08] [ERROR   ] ERROR COMPLETAR: No se puede completar: el estado es PENDING, se esperaba CONFIRMED.
+    Traceback (most recent call last):
+      File "/home/claude/software_fj/management.py", line 235, in complete_reservation
+        res.complete()
+      File "/home/claude/software_fj/reservations.py", line 115, in complete
+        raise ReservationError(
+    exceptions.ReservationError: No se puede completar: el estado es PENDING, se esperaba CONFIRMED.
+[2026-05-12 03:15:08] [INFO    ] RESERVA CANCELADA: #1
+[2026-05-12 03:15:08] [ERROR   ] ERROR CONFIRMAR: No se puede confirmar: el estado es CANCELLED, se esperaba PENDING.
+    Traceback (most recent call last):
+      File "/home/claude/software_fj/management.py", line 216, in confirm_reservation
+        res.confirm()
+      File "/home/claude/software_fj/reservations.py", line 102, in confirm
+        raise ReservationError(
+    exceptions.ReservationError: No se puede confirmar: el estado es CANCELLED, se esperaba PENDING.
+[2026-05-12 03:15:08] [ERROR   ] ERROR RESERVA: Valor inválido para 'client_id': 9999. Razón: cliente no encontrado | Detalles: param='client_id', value=9999
+    Traceback (most recent call last):
+      File "/home/claude/software_fj/management.py", line 171, in create_reservation
+        raise InvalidParameterError("client_id", client_id, "cliente no encontrado")
+    exceptions.InvalidParameterError: Valor inválido para 'client_id': 9999. Razón: cliente no encontrado | Detalles: param='client_id', value=9999
+[2026-05-12 03:15:08] [INFO    ] Software FJ iniciado.
+[2026-05-12 03:15:08] [INFO    ] CLIENTE REGISTRADO: [#501] Jorge Vargas | jorge@fj.com | 3150000000
+[2026-05-12 03:15:08] [INFO    ] SERVICIO AGREGADO: [Consultoría] Consult IA | Inteligencia Artificial | Experto: Dr. Smith (Lead, ×2.0) | Tarifa: $200,000/h | Disponible
+[2026-05-12 03:15:08] [INFO    ] SERVICIO DESHABILITADO: 'Consult IA'
+[2026-05-12 03:15:08] [ERROR   ] ERROR RESERVA: El servicio 'Consult IA' no está disponible actualmente. | Detalles: service='Consult IA'
+    Traceback (most recent call last):
+      File "/home/claude/software_fj/management.py", line 186, in create_reservation
+        reservation = Reservation(
+                      ^^^^^^^^^^^^
+      File "/home/claude/software_fj/reservations.py", line 63, in __init__
+        self.validate()
+      File "/home/claude/software_fj/reservations.py", line 75, in validate
+        self._service.check_availability()
+      File "/home/claude/software_fj/services.py", line 85, in check_availability
+        raise ServiceNotAvailableError(self._name)
+    exceptions.ServiceNotAvailableError: El servicio 'Consult IA' no está disponible actualmente. | Detalles: service='Consult IA'
+[2026-05-12 03:15:08] [INFO    ] SERVICIO HABILITADO: 'Consult IA'
+[2026-05-12 03:15:08] [INFO    ] RESERVA CREADA: #1 | Cliente #501 | 'Consult IA' | 2026-05-15 | 2.0h | $952,000.00
+[2026-05-12 03:15:08] [INFO    ] Software FJ iniciado.
+[2026-05-12 03:15:08] [INFO    ] CLIENTE REGISTRADO: [#601] Sofia Mendez | sofia@fj.com | 3170000000
+[2026-05-12 03:15:08] [INFO    ] SERVICIO AGREGADO: [Sala] Sala Stats | Sala: Piso 2 | Capacidad: 10 | Tarifa: $50,000/h | Disponible
+[2026-05-12 03:15:08] [INFO    ] RESERVA CREADA: #1 | Cliente #601 | 'Sala Stats' | 2026-05-17 | 2.0h | $119,000.00
+[2026-05-12 03:15:08] [INFO    ] RESERVA CREADA: #2 | Cliente #601 | 'Sala Stats' | 2026-05-18 | 3.0h | $178,500.00
+[2026-05-12 03:15:08] [INFO    ] RESERVA CONFIRMADA: #1
+[2026-05-12 03:15:08] [INFO    ] RESERVA CANCELADA: #2
