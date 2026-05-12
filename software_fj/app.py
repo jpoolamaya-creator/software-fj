@@ -1,9 +1,11 @@
 # =============================================================================
-# app.py — Interfaz gráfica principal de Software FJ (Tkinter)
+# Software FJ - Integrated Management System with Tkinter GUI
 # =============================================================================
-# Punto de entrada de la aplicación. Importa todos los módulos del dominio
-# y construye la ventana principal con sidebar de navegación.
-#
+# Estudiante: Jean Pool Muñoz Amaya
+# Tutor: Juan Pablo Zambrano Sanjuan
+# Grupo: 371
+# Programa Académico: Ingeniería de Sistemas
+# Código Fuente: Autoría Propia
 # Para ejecutar:
 #     cd software_fj && python app.py
 # =============================================================================
